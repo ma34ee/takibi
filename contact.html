@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <title>takibi | お問い合わせ</title>
+    <link rel="stylesheet" href="css/reset.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="cp">
+
+    <input type="checkbox" id="trigger">
+    <label for="trigger" id="trigger_btn"><span class="hdn">メニューボタン</span></label>
+
+    <header class="site-header">
+        <a href="index.html">
+            <h1 class="hdn"><span>takibi</span></h1>
+        </a>
+        <div class="header_right">
+            <a href="index.html">トップ</a>
+            <a href="guide.html">使い方</a>
+            <a href="contact.html" class="current">お問い合わせ</a>
+        </div>
+    </header>
+
+    <label for="trigger" id="coverlayer"></label>
+
+    <div class="cp_bg">
+        <div class="cp_h1_bg">
+            <div class="cp_h1_bg_txt inner">
+                <h1>お問い合わせ</h1>
+                <p>下記のフォームの項目を入力して送信ボタンを押してください。</p>
+                <p class="attention"><span>*</span>のついた項目は必須項目です。</p>
+            </div>
+            <img class="mt m0c" src="img/m06.svg" alt="">
+        </div>
+        <main class="inner cp">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScH3meRMEpCzAJOmkjYNoGbfmBY9c67povuiX21NkY06o3jkw/viewform?embedded=true" width="100%" height="860" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+        </main>
+    </div>
+
+
+    <div class="dl_box_bg">
+        <div id="dl_box" class="inner">
+            <div class="dl_upper">
+                <img src="img/qr_fake.jpg" alt="ダウンロードQRコード" class="qr">
+                <div class="dl_right">
+                    <h2>いますぐtakibiアプリをダウンロード</h2>
+                    <div class="dls">
+                        <a href="https://www.apple.com/jp/app-store/">
+                            <img src="img/badge_appStore.svg" alt="App Store からダウンロード">
+                        </a>
+                        <a href="https://play.google.com/store">
+                            <img height="40" src="img/badge_googlePlay.png" alt="Google Play で手に入れよう">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="dl_txt">
+                <p>Apple、Appleのロゴ、App Storeは、米国および他国のApple Inc.の登録商標です。</p>
+                <p>Google Play 、および Google Play ロゴは、Google LLC の商標です。</p>
+                <p>QRコードは（株）デンソーウェーブの登録商標です。</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer_details_bg">
+        <div class="footer_details inner">
+            <div class="fd_left">
+                <a href="index.html"><span>トップ</span></a>
+                <a href="guide.html"><span>使い方</span></a>
+                <a href="contact.html"><span>お問い合わせ</span></a>
+                <!-- <a href=""><span>よくあるご質問</span></a>
+                <a href=""><span>運営会社</span></a> -->
+            </div>
+            <div class="fd_right">
+                <p>最新情報をチェック!</p>
+                <div class="sns_box">
+                    <a href="https://twitter.com/?lang=ja"><img width="30" src="img/logo_twitter.svg" alt="ツイッター"></a>
+                    <a href="https://www.instagram.com/?hl=ja"><img width="30" src="img/logo_insta.svg"
+                            alt="インスタグラム"></a>
+                    <a href="https://www.facebook.com/"><img width="30" src="img/logo_fb.svg" alt="フェイスブック"></a>
+                </div>
+                <!-- <a href="">利用規約</a>
+                <a href="">個人情報保護方針</a> -->
+            </div>
+        </div>
+    </div>
+    <footer>
+        <img height="56" src="img/logo_takibi.svg" alt="takibiロゴ">
+        <small>&copy;takibi all rights reserved.</small>
+    </footer>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
+        </script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/messages_ja.js"></script>
+    <script>
+        $(function () {
+
+            //ヘッダースクロール表示非表示に必要な定義 準備文の外に書く必要がある
+            var startPos = 0, winScrollTop = 0;
+            //スクロール系の準備文
+            $(window).on('on scroll', function () {
+
+                //画面サイズ取得
+                h = $(window).height();
+                $(window).resize(function () {
+                    //画面リサイズ時の高さ取得
+                    h = $(window).height();
+                });
+
+                //scroll位置取得
+                scroll = $(window).scrollTop()
+
+                //下スクロールヘッダー非表示、上スクロールヘッダー表示
+                winScrollTop = $(this).scrollTop();
+                if (winScrollTop >= startPos) {
+                    if (winScrollTop >= 65) {
+                        $('.site-header').addClass('hide');
+                    }
+                } else {
+                    $('.site-header').removeClass('hide');
+                }
+                startPos = winScrollTop;
+
+            });
+
+            //	$("#form").validate();
+            $("#form").validate({
+                errorPlacement: function (error, element) {
+                    if (element.is(':radio,:checkbox')) {
+                        error.appendTo(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+                //	E-mailの確認用
+                rules: {
+                    email2: {
+                        equalTo: "#email"
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>
