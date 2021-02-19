@@ -96,8 +96,6 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
         </script>
-    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="js/messages_ja.js"></script>
     <script>
         $(function () {
 
@@ -127,23 +125,6 @@
                 }
                 startPos = winScrollTop;
 
-            });
-
-            //	$("#form").validate();
-            $("#form").validate({
-                errorPlacement: function (error, element) {
-                    if (element.is(':radio,:checkbox')) {
-                        error.appendTo(element.parent());
-                    } else {
-                        error.insertAfter(element);
-                    }
-                },
-                //	E-mailの確認用
-                rules: {
-                    email2: {
-                        equalTo: "#email"
-                    }
-                }
             });
 
         });
